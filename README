@@ -1,0 +1,22 @@
+	This is a word search solver implemented in Ruby.  When given a text file containing a word search board and a list of keywords to search for, it will iterate through the board to find the location of each word.  It supports words being vertical, horizontal, diagonal, and if the user specifies, backwards in any of those directions as well.
+
+	The program begins by giving the user some usage directions then prompting for the filename of the board data.  If the file does not exist, the program aborts with the message "Error: File not found."  Otherwise, the program opens the text file and reads in the board and keywords.  After this, a WordSearchSolver object is created.  By calling solver.search_all, the solver will attempt to find all the keywords given.  A solution will then be printed by calling solver.print_solution.
+
+	If the board cannot find a keyword, it will output this:
+
+	===WARNING===
+	The following keyword(s) were not located:
+	exxample
+	girrafe
+	...
+	...
+
+	This can potentially alert the user that the text file containing the board data may have been input incorrectly.  When the solution is output, this will be the general form:
+
+	example at row 1, column 2 with direction: RIGHT
+	giraffe at row 3, column 5 with direction: RIGHT-DOWN DIAGONAL
+	stapler at row 8, column 1 with direction: UP
+	...
+	...
+
+	Followed by a representation of the board with the row and column axes labeled for the user's convenience.
