@@ -85,6 +85,14 @@ class WordSearchSolver
     @solutions = []
   end
   
+  # Solve a board and print out the solution
+  def solve
+	search_all
+	print_solution
+  end
+  
+private
+  
   # Search for all keywords in the board
   def search_all
     # Delete keywords from the list as we find them
@@ -109,8 +117,6 @@ class WordSearchSolver
     puts
     print_board
   end
-  
-private
   
   # Print out the game board as given originally
   def print_board
@@ -248,8 +254,11 @@ end # end File.open
 # Create a WordSearchSolver
 solver = WordSearchSolver.new(board, keywords, allow_backwards)
 
-# Have the solver search for a solution
-solver.search_all
+# Start the timer
+start = Time.now
 
-# Print out the solver's solution
-solver.print_solution
+# Solve the board and print out the solution
+solver.solve
+
+# Stop the timer and output the elapsed time
+puts "Elapsed time: #{Time.now - start} seconds."
