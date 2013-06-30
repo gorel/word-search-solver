@@ -136,6 +136,11 @@ private
     # For each point on the board...
     (0...@rows).each do |row|
       (0...@cols).each do |col|
+        # Check the first letter to see if keyword[0] == board[row][col]
+        # This optimization allows us to skip checking all directions
+        # if we know the keyword could not exist in any direction
+        next if @board[row][col] != keyword[0]
+        
         # For each possible direction to search...
         @x_dir.each do |dx|
           @y_dir.each do |dy|
