@@ -113,9 +113,13 @@ private
     
     # TODO: Print out pretty solution ex: a t k-e-y-w-o-r-d x b
     @solutions.each {|soln| puts soln.to_s}
-    # Print out what the board looks like to help the user see the solution
-    puts
-    print_board
+	
+	# If the board isn't bigger than a standard console, print it out
+	if @board.length < 24
+		# Print out what the board looks like to help the user see the solution
+		puts
+		print_board
+	end
   end
   
   # Print out the game board as given originally
@@ -167,8 +171,12 @@ private
     row_start = row
     col_start = col
     
+	# Since we already checked keyword[0], start at the next space in the given direction
+	row += dy
+	col += dx
+	
     # For each character of the keyword
-    keyword.chars.to_a.each_index do |index|
+	1.upto(keyword.length - 1).each do |index|
       # If we are out of the board boundary, we don't have a match
       if (row < 0 or col < 0 or row >= @rows or col >= @cols)
         return false
